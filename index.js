@@ -4,10 +4,16 @@ import cors from 'cors';
 import OpenAI from 'openai';
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
+
 app.use(express.json());
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+
 
 
 const openai = new OpenAI({
